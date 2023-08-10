@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
-use App\Models\Gpal;
+use App\Models\Goal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,9 +16,8 @@ class TodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Goal $goal)
-    {
-        request->validate([
+    public function store(Request $request, Goal $goal) {
+        $request->validate([
             'content' => 'required',
         ]);
 
@@ -39,8 +38,7 @@ class TodoController extends Controller
      * @param  \App\Models\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Goal $goal, Todo $todo)
-    {
+    public function update(Request $request, Goal $goal, Todo $todo) {
         $request->validate([
             'content' => 'required',
         ]);
@@ -60,8 +58,7 @@ class TodoController extends Controller
      * @param  \App\Models\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Goal $goal, Todo $todo)
-    {
+    public function destroy(Goal $goal, Todo $todo) {
         $todo->delete();
 
         return redirect()->route('goals.index');
