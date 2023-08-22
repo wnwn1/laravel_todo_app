@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Todo extends Model
+class Tag extends Model
 {
     use HasFactory;
 
@@ -13,11 +13,7 @@ class Todo extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function goal() {
-        return $this->belongsTo(Goal::class);
-    }
-
-    public function tags() {
-        return $this->belongsToMany(Tag::class)->withTimestamps();
+    public function todos() {
+        return $this->belongsToMany(Todo::class)->withTimestamps();
     }
 }
